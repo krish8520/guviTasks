@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        var request = new XMLHttpRequest();
+        request.open('GET', 'https://restcountries.eu/rest/v2/all', true)
+
+        request.send();
+
+
+        request.onload = function () {
+            var data = JSON.parse(this.response);
+            console.log(data);
+            var asiaRegion = data.filter(ele => ele.region === "Asia");
+            console.log(asiaRegion);
+        }
+
+
+        var request = new XMLHttpRequest();
+
+
+        request.open('GET', 'https://restcountries.eu/rest/v2/all', true)
+
+        request.send();
+
+        request.onload = function () {
+            var data = JSON.parse(this.response);
+            console.log(data);
+            var population = data.filter(ele => ele.population < 200000);
+            console.log(population);
+        }
+
+
+        var request = new XMLHttpRequest();
+
+        request.open('GET', 'https://restcountries.eu/rest/v2/all', true)
+
+        request.send();
+
+        request.onload = function () {
+            var data = JSON.parse(this.response);
+            console.log(data);
+            var asiaCountries = data.filter(ele => ele.region === 'Asia');
+            console.log(asiaCountries);
+            asiaCountries.forEach((a, b) => {
+                console.log(a.name);
+                console.log(a.flag);
+                console.log(a.capital);
+            })
+        };
+
+
+        var request = new XMLHttpRequest();
+
+        request.open('GET', 'https://restcountries.eu/rest/v2/all', true)
+
+        request.send();
+
+        request.onload = function () {
+            var data = JSON.parse(this.response);
+            console.log(data);
+            var totalPop = data.reduce(((accu, curr) => accu + curr.population), 0);
+            console.log(totalPop);
+
+        }
+
+
+        var request = new XMLHttpRequest();
+
+        request.open('GET', 'https://restcountries.eu/rest/v2/all', true)
+
+        request.send();
+
+        request.onload = function () {
+            var data = JSON.parse(this.response);
+            console.log(data);
+
+            var USDollars = data.filter((ele) => {
+                let flag = false
+                ele.currencies.forEach((item) => {
+                    if (item.code === 'USD')
+                        flag = true;
+                })
+                if (flag == true)
+                    return true
+                else
+                    return false
+            })
+            console.log(USDollars)
+
+        }
+
+    </script>
+</body>
+
+</html>
